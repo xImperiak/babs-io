@@ -1,0 +1,29 @@
+{
+  "name": "ximperiakgames",
+  "version": "1.0.0",
+  "description": "game",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "game",
+    "zombies",
+    "ximperiak",
+    "shooter",
+    "2d",
+    "top",
+    "games",
+    "free",
+    "online"
+  ],
+  "author": "xImperiak",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-p5": "^1.0.3",
+    "p5": "^1.0.0",
+    "socket.io": "^2.3.0"
+  }
+}
