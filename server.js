@@ -315,17 +315,17 @@ class Player {
   die(){
 	  if(this.alive == true){
 		  
-		for (let i = 0; i < bulletsC.length; i++) {
-			if(dist(bulletsC[i].x+bulletsC[i].xmov, bulletsC[i].y+bulletsC[i].ymov, this.x, this.y) <= this.r+bulletsC[i].r){
-				this.life -= bulletsC[i].damage;
+		for (let b = 0; b < bulletsC.length; b++) {
+			if(dist(bulletsC[b].x+bulletsC[b].xmov, bulletsC[b].y+bulletsC[b].ymov, this.x, this.y) <= this.r+bulletsC[b].r){
+				this.life -= bulletsC[b].damage;
 				for(let i = 0; i < Math.round(random(1,3)); i++){
-					let b = new Blood(this.x, this.y, random(1,6), random(-10,30), random(-1*PI, PI));
-					bloodC.push(b);
+					let d = new Blood(this.x, this.y, random(1,6), random(-10,30), random(-1*PI, PI));
+					bloodC.push(d);
 				}
-				if (bulletsC[i].ability == 3){
-					bulletsC[i].damage -= 2*bulletsC[i].damage/3;
-				}else{bulletsC[i].dead = true;}
-				bulletsC[i].die();
+				if (bulletsC[b].ability == 3){
+					bulletsC[b].damage -= 2*bulletsC[b].damage/3;
+				}else{bulletsC[b].dead = true;}
+				bulletsC[b].die();
 				break;
 			}
 		}
