@@ -52,7 +52,7 @@ var playerData = {
   }
   
 function setup() {
-	socket = io.connect('http://79.109.244.31:3000/');
+	socket = io.connect('https://babs-io.herokuapp.com/');
   createCanvas(windowWidth, windowHeight);
 		
   socket.emit('start', playerData);
