@@ -134,6 +134,7 @@ io.sockets.on(
       }
 	  if(playersC.length == 0){
 		  zombiesC.length = 0;
+		  gadgetsC.length = 0;
 		  clearInterval(gadgetGen);
 		  timer = false;
 		  }
@@ -195,7 +196,7 @@ class Player {
 	this.life = 1000;
     this.c = 150;
 	this.currentGun = 1;
-	this.currentGadget = 2;
+	this.currentGadget = 0;
 	this.walkVel = 0.1;
 	this.runVel = 0.2;
 	this.crouchVel = 0.02;
@@ -446,7 +447,7 @@ function bGrenadeUse(i, playerData){
 }
 
 function healthKitUse(i){
-	playersC[i].life += random(25,40);
+	playersC[i].life += random(250,400);
 }
   
 function  gadgetGen(){

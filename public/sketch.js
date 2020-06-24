@@ -18,6 +18,9 @@ let zombiesKilled = 0;
 let nextWave = 100;
 let difficulty = 0;
 
+let greens = [];
+let rocks = [];
+
 let step1 = [];
 let step2 = [];
 let step3 = [];
@@ -89,6 +92,44 @@ function setup() {
   guns.push(scar);
   let grizzly =  new Gun(5,  40, 13,  3,  800, 0.8, 0.01, 1,  250, 0);
   guns.push(grizzly);
+  
+	for(var i = 0; i < random(10,30); i++){
+		let vertexen = [];
+		let col = color(random(56,150), random(150,210), random(70,170), random(0,150));
+		let k = {x: random(0, mapSize), y: random(0, mapSize)};
+		let radius = random(mapSize/40, mapSize/4);
+		let increm = random(0.6,1.1);
+		for (var a = 0; a < TWO_PI; a += increm) {
+			let offset = random (-mapSize/8, mapSize/8);
+			let r = radius + offset;
+			let x = k.x + r * cos(a);
+			let y = k.y + r * sin(a);
+			let v = {x: x, y:y};
+			vertexen.push(v)
+		}
+		let g = {vertexes: vertexen, c: col};
+		greens.push(g);
+	}
+	
+	for(var i = 0; i < random(40,70); i++){
+		let vertexen = [];
+		let col = color(random(100,141), random(60,110), random(50,90));
+		let k = {x: random(0, mapSize), y: random(0, mapSize)};
+		let radius = random(15, 20);
+		let increm = random(0.6,1.1);
+		let xoff = random(0,10000);
+		for (var a = 0; a < TWO_PI; a += increm) {
+			let offset = map(noise(xoff, 0), 0, 1, -25, 25) + random (-3, 3);
+			let r = radius + offset;
+			let x = k.x + r * cos(a);
+			let y = k.y + r * sin(a);
+			let v = {x: x, y:y};
+			vertexen.push(v)
+			xoff += 0.2;
+		}
+		let g = {vertexes: vertexen, c: col};
+		rocks.push(g);
+	}
 }
 
 function draw() {
@@ -108,13 +149,19 @@ function draw() {
 		offset.y = offset.y*(-1);
 		}
 	}
-  background(200);
+  background(color(188, 170, 164));
   
   if(zombiesKilled == nextWave){
 	  nextWave = 5*nextWave;
 	  zombie.genTime -= 3;
 	  difficulty +=10;
   }
+  
+  push();
+  scale(zoom);
+  
+  details();
+  pop();
   
   if (player != null){stats();}
   
@@ -393,3 +440,29 @@ function gadgetsShow(i, player){
   }
     pop();
   }
+  
+function  details(){
+	for(var i = 0; i < greens.length; i++){
+		push();
+		noStroke();
+		fill(greens[i].c);
+		beginShape();
+		for(var j = 0; j < greens[i].vertexes.length; j++){
+			vertex(greens[i].vertexes[j].x + offset.x, greens[i].vertexes[j].y + offset.y);
+		}
+		endShape(CLOSE);
+		pop();
+	}
+	
+	for(var i = 0; i < rocks.length; i++){
+		push();
+		noStroke();
+		fill(rocks[i].c);
+		beginShape();
+		for(var j = 0; j < rocks[i].vertexes.length; j++){
+			vertex(rocks[i].vertexes[j].x + offset.x, rocks[i].vertexes[j].y + offset.y);
+		}
+		endShape(CLOSE);
+		pop();
+	}
+}
