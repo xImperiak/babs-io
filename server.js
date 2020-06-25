@@ -117,7 +117,7 @@ io.sockets.on(
         if (socket.id == playersC[i].id) {
           playersC[i].move(playerData);
 		  if (playerData.spa == true){useGadget(i, playerData)}
-		  playersC[i].die(playerData);
+		  playersC[i].die();
 		  move(playerData, socket);
         }
       }
