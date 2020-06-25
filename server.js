@@ -115,10 +115,10 @@ io.sockets.on(
     socket.on('update', function(playerData) {
       for (var i = 0; i < playersC.length; i++) {
         if (socket.id == playersC[i].id) {
-          playersC[i].move(playerData);
-		  if (playerData.spa == true){useGadget(i, playerData)}
-		  playersC[i].die();
-		  move(playerData, socket);
+        playersC[i].move(playerData);
+	if (playerData.spa == true){useGadget(i, playerData)}
+	playersC[i].die();
+	move(playerData, socket);
         }
       }
     });
@@ -143,6 +143,9 @@ io.sockets.on(
 );
 
 function move(playerData, socket){
+	for (var i = 0; i < playersC.length; i++){
+		playersC[i].die();
+	}
 	for (var i = 0; i < zombiesC.length; i++){
 		zombiesC[i].move();
 		zombiesC[i].die(i);
