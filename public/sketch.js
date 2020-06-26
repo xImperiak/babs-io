@@ -130,7 +130,7 @@ function setup() {
 		let radius = random(mapSize/40, mapSize/4);
 		let increm = random(0.6,1.1);
 		for (var a = 0; a < TWO_PI; a += increm) {
-			let offset = random (-mapSize/8, mapSize/8);
+			let offset = map(noise(xoff, 0), 0, 1, -25, 25) + random (-radius/4, radius/4);
 			let r = radius + offset;
 			let x = k.x + r * cos(a);
 			let y = k.y + r * sin(a);
@@ -149,7 +149,7 @@ function setup() {
 		let increm = random(0.6,1.1);
 		let xoff = random(0,10000);
 		for (var a = 0; a < TWO_PI; a += increm) {
-			let offset = map(noise(xoff, 0), 0, 1, -25, 25) + random (-3, 3);
+			let offset = map(noise(xoff, 0), 0, 1, -radius*0.75, radius*0.75) + random (-radius/4, radius/4);
 			let r = radius + offset;
 			let x = k.x + r * cos(a);
 			let y = k.y + r * sin(a);
