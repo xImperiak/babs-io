@@ -128,6 +128,7 @@ function setup() {
 		let col = color(random(56,150), random(150,210), random(70,170), random(0,150));
 		let k = {x: random(0, mapSize), y: random(0, mapSize)};
 		let radius = random(mapSize/40, mapSize/4);
+		let xoff = random(0,10000);
 		let increm = random(0.6,1.1);
 		for (var a = 0; a < TWO_PI; a += increm) {
 			let offset = map(noise(xoff, 0), 0, 1, -25, 25) + random (-radius/4, radius/4);
@@ -135,7 +136,8 @@ function setup() {
 			let x = k.x + r * cos(a);
 			let y = k.y + r * sin(a);
 			let v = {x: x, y:y};
-			vertexen.push(v)
+			vertexen.push(v);
+			xoff += 0.2;
 		}
 		let g = {vertexes: vertexen, c: col};
 		greens.push(g);
