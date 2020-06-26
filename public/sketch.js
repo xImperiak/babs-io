@@ -285,95 +285,95 @@ function draw() {
 }
 
 function inputs(playerData) {
-	if(isMobile.any() == false){
-	if (keyIsDown(81)) {
-      playerData.q = true;
-    }else{playerData.q = false;}
-
-	if (keyIsDown(SHIFT)) {
-		playerData.may = true;
-    }else{playerData.may = false;}
-
-    if (keyIsDown(LEFT_ARROW)||keyIsDown(65)) {
-      playerData.a = true;
-    }else{playerData.a = false;}
-
-    if (keyIsDown(RIGHT_ARROW)||keyIsDown(68)) {
-      playerData.d = true;
-    }else{playerData.d = false;}
-
-    if (keyIsDown(UP_ARROW)||keyIsDown(87)) {
-      playerData.w = true;
-    }else{playerData.w = false;}
-
-    if (keyIsDown(DOWN_ARROW)||keyIsDown(83)) {
-      playerData.s = true;
-    }else{playerData.s = false;}
 	
-	if (keyIsDown(187)) {
-      playerData.plus = true;
-    }else{playerData.plus = false;}
-	
-	if (keyIsDown(189)) {
-      playerData.less = true;
-    }else{playerData.less = false;}
-	
-	if (keyIsDown(69)) {
-      playerData.e = true;
-    }else{playerData.e = false;}
-	
-	if (mouseIsPressed){
-	  playerData.click = true;
-    }else{playerData.click = false;}
-	
-	if (keyIsDown(32)){
-	  playerData.spa = true;
-    }else{playerData.spa = false;}
-	
-	playerData.x = (mouseX/zoom - offset.x);
-	playerData.y = (mouseY/zoom - offset.y);
-	}
 	
 	if(isMobile.any()){
-	playerData.click = false;
-	push();
+		playerData.click = false;
+		push();
 		noStroke();
 		fill(color(255, 100));
 		circle(leftT.x, leftT.y, 175);
 		circle(rigtT.x, rightT.y, 175);
 		fill(color(200, 200));
-	for (var i = 0; i < touches.length; i++) {
-		if(touches[i].x < width/2 && dist(leftT.x, leftT.y, touches[i].x, touches[i].y) < 100){
-			let x = touches[i].x -leftT.x;
-			let y = touches[i].y -leftT.y;
-			if (y < -10) {
-      			playerData.a = true;
-    			}else{playerData.a = false;}
+		for (var i = 0; i < touches.length; i++) {
+			if(touches[i].x < width/2 && dist(leftT.x, leftT.y, touches[i].x, touches[i].y) < 100){
+				let x = touches[i].x -leftT.x;
+				let y = touches[i].y -leftT.y;
+				if (y < -10) {
+				playerData.a = true;
+				}else{playerData.a = false;}
 
-    			if (y > 10) {
-			playerData.d = true;
-			}else{playerData.d = false;}
+				if (y > 10) {
+				playerData.d = true;
+				}else{playerData.d = false;}
 
-			if (x > 10) {
-			playerData.w = true;
-			}else{playerData.w = false;}
+				if (x > 10) {
+				playerData.w = true;
+				}else{playerData.w = false;}
 
-			if (x < -10) {
-			playerData.s = true;
-			}else{playerData.s = false;}
-			circle(touches[i].x, touches[i].y, 50);
+				if (x < -10) {
+				playerData.s = true;
+				}else{playerData.s = false;}
+				circle(touches[i].x, touches[i].y, 50);
+			}
+			if(touches[i].x > width/2 && dist(rightT.x, rightT.y, touches[i].x, touches[i].y) < 100){
+				let x = touches[i].x -rightT.x;
+				let y = touches[i].y -rightT.y;
+				playerData.x = (map(x, -100, 100, 0, width)/zoom - offset.x);
+				playerData.y = (map(y, -100, 100, 0, width)/zoom - offset.y);
+				playerData.click = true;
+				circle(touches[i].x, touches[i].y, 50);
+			}
+
 		}
-		if(touches[i].x > width/2 && dist(rightT.x, rightT.y, touches[i].x, touches[i].y) < 100){
-			let x = touches[i].x -rightT.x;
-			let y = touches[i].y -rightT.y;
-			playerData.x = (map(x, -100, 100, 0, width)/zoom - offset.x);
-			playerData.y = (map(y, -100, 100, 0, width)/zoom - offset.y);
-	  		playerData.click = true;
-			circle(touches[i].x, touches[i].y, 50);
-		}
-		
-	}
 		pop();
+	}else{
+		if (keyIsDown(81)) {
+	      playerData.q = true;
+	    }else{playerData.q = false;}
+
+		if (keyIsDown(SHIFT)) {
+			playerData.may = true;
+	    }else{playerData.may = false;}
+
+	    if (keyIsDown(LEFT_ARROW)||keyIsDown(65)) {
+	      playerData.a = true;
+	    }else{playerData.a = false;}
+
+	    if (keyIsDown(RIGHT_ARROW)||keyIsDown(68)) {
+	      playerData.d = true;
+	    }else{playerData.d = false;}
+
+	    if (keyIsDown(UP_ARROW)||keyIsDown(87)) {
+	      playerData.w = true;
+	    }else{playerData.w = false;}
+
+	    if (keyIsDown(DOWN_ARROW)||keyIsDown(83)) {
+	      playerData.s = true;
+	    }else{playerData.s = false;}
+
+		if (keyIsDown(187)) {
+	      playerData.plus = true;
+	    }else{playerData.plus = false;}
+
+		if (keyIsDown(189)) {
+	      playerData.less = true;
+	    }else{playerData.less = false;}
+
+		if (keyIsDown(69)) {
+	      playerData.e = true;
+	    }else{playerData.e = false;}
+
+		if (mouseIsPressed){
+		  playerData.click = true;
+	    }else{playerData.click = false;}
+
+		if (keyIsDown(32)){
+		  playerData.spa = true;
+	    }else{playerData.spa = false;}
+
+		playerData.x = (mouseX/zoom - offset.x);
+		playerData.y = (mouseY/zoom - offset.y);
 	}
   }
 
