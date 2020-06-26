@@ -129,7 +129,7 @@ function setup() {
 		let k = {x: random(0, mapSize), y: random(0, mapSize)};
 		let radius = random(mapSize/40, mapSize/4);
 		let xoff = random(0,10000);
-		let increm = TWO_PI/random(2,4);
+		let increm = TWO_PI/random(6,12);
 		for (var a = 0; a < TWO_PI; a += increm) {
 			let offset = map(noise(xoff, 0), 0, 1, -25, 25) + random (-radius/4, radius/4);
 			let r = radius + offset;
@@ -148,7 +148,7 @@ function setup() {
 		let col = color(random(100,141), random(60,110), random(50,90));
 		let k = {x: random(0, mapSize), y: random(0, mapSize)};
 		let radius = random(15, 20);
-		let increm = TWO_PI/random(2,4);
+		let increm = TWO_PI/random(6,10);
 		let xoff = random(0,10000);
 		for (var a = 0; a < TWO_PI; a += increm) {
 			let offset = map(noise(xoff, 0), 0, 1, -radius*0.75, radius*0.75) + random (-radius/4, radius/4);
