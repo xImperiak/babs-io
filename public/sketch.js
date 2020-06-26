@@ -293,7 +293,7 @@ function inputs(playerData) {
 		noStroke();
 		fill(color(255, 100));
 		circle(leftT.x, leftT.y, 175);
-		circle(rigtT.x, rightT.y, 175);
+		circle(rightT.x, rightT.y, 175);
 		fill(color(200, 200));
 		for (var i = 0; i < touches.length; i++) {
 			if(touches[i].x < width/2 && dist(leftT.x, leftT.y, touches[i].x, touches[i].y) < 100){
