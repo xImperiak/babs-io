@@ -283,12 +283,12 @@ function draw() {
   }
   pop();
   
-  inputs(playerData, player);
+  inputs(playerData);
 	
   socket.emit('update', playerData);
 }
 
-function inputs(playerData, player) {
+function inputs(playerData) {
 	
 	
 	if(isMobile.any()){
@@ -328,8 +328,8 @@ function inputs(playerData, player) {
 				let x = touches[i].x -rightT.x;
 				let y = touches[i].y -rightT.y;
 				let k = atan2(y, x);
-				playerData.x = ((300*cos(k) + player.x)/zoom - offset.x);
-				playerData.y = ((300*sin(k) + player.y)/zoom - offset.y);
+				playerData.x = ((300*cos(k) + player.x) - offset.x);
+				playerData.y = ((300*sin(k) + player.y) - offset.y);
 				playerData.click = true;
 				fill(color(255, 255));
 				circle(touches[i].x, touches[i].y, 50);
