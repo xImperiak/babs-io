@@ -21,6 +21,9 @@ var isMobile = {
     }
 };
 
+let leftT;
+let rightT;
+
 let player;
 var bullets = [];
 var explosions = [];
@@ -38,15 +41,6 @@ let block = 0;
 let zombiesKilled = 0;
 let nextWave = 100;
 let difficulty = 0;
-
-if(isMobile.any()){
-	let leftT = {
-		x:0,
-		y:0}
-	let rightT = {
-		x:0,
-		y:0}
-}
 
 let greens = [];
 let rocks = [];
@@ -165,6 +159,14 @@ function setup() {
 }
 
 function draw() {
+	if(1 = 1){
+	leftT = {
+		x:width*0.2,
+		y:height*0.8}
+	rightT = {
+		x:width*0.8,
+		y:height*0.8}
+	}
 	
 	
 	for (var i = players.length - 1; i >= 0; i--) {
@@ -289,14 +291,13 @@ function draw() {
 function inputs(playerData) {
 	
 	
-	if(isMobile.any()){
+	if(1 == 1){
 		playerData.click = false;
 		push();
 		noStroke();
 		fill(color(255, 100));
 		circle(leftT.x, leftT.y, 175);
 		circle(rightT.x, rightT.y, 175);
-		fill(color(200, 200));
 		for (var i = 0; i < touches.length; i++) {
 			if(touches[i].x < width/2 && dist(leftT.x, leftT.y, touches[i].x, touches[i].y) < 100){
 				let x = touches[i].x -leftT.x;
@@ -316,6 +317,7 @@ function inputs(playerData) {
 				if (x < -10) {
 				playerData.s = true;
 				}else{playerData.s = false;}
+				fill(color(200, 200));
 				circle(touches[i].x, touches[i].y, 50);
 			}
 			if(touches[i].x > width/2 && dist(rightT.x, rightT.y, touches[i].x, touches[i].y) < 100){
@@ -324,6 +326,7 @@ function inputs(playerData) {
 				playerData.x = (map(x, -100, 100, 0, width)/zoom - offset.x);
 				playerData.y = (map(y, -100, 100, 0, width)/zoom - offset.y);
 				playerData.click = true;
+				fill(color(200, 200));
 				circle(touches[i].x, touches[i].y, 50);
 			}
 
@@ -544,7 +547,7 @@ function  details(){
 	}
 }
 
-function touchStarted() {
+/*function touchStarted() {
 	let leftSide = false;
 	let rightSide = false;
 	for (var i = 0; i < touches.length; i++) {
@@ -559,4 +562,4 @@ function touchStarted() {
 			rightT.y = touches[i].y;
 		}
 	}
-}
+}*/
