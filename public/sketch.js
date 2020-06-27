@@ -159,7 +159,7 @@ function setup() {
 }
 
 function draw() {
-	if(1 == 1){
+	if(isMobile.any()){
 	leftT = {
 		x:width*0.2,
 		y:height*0.8}
@@ -291,7 +291,7 @@ function draw() {
 function inputs(playerData) {
 	
 	
-	if(1 == 1){
+	if(isMobile.any()){
 		playerData.click = false;
 		push();
 		noStroke();
@@ -299,34 +299,34 @@ function inputs(playerData) {
 		circle(leftT.x, leftT.y, 175);
 		circle(rightT.x, rightT.y, 175);
 		for (var i = 0; i < touches.length; i++) {
-			if(touches[i].x < width/2 && dist(leftT.x, leftT.y, touches[i].x, touches[i].y) < 100){
+			if(touches[i].x < width/2 && dist(leftT.x, leftT.y, touches[i].x, touches[i].y) < 150){
 				let x = touches[i].x -leftT.x;
 				let y = touches[i].y -leftT.y;
-				if (y < -10) {
+				if (x < -10) {
 				playerData.a = true;
 				}else{playerData.a = false;}
 
-				if (y > 10) {
+				if (x > 10) {
 				playerData.d = true;
 				}else{playerData.d = false;}
 
-				if (x > 10) {
+				if (y > 10) {
 				playerData.w = true;
 				}else{playerData.w = false;}
 
-				if (x < -10) {
+				if (y < -10) {
 				playerData.s = true;
 				}else{playerData.s = false;}
 				fill(color(200, 200));
 				circle(touches[i].x, touches[i].y, 50);
 			}
-			if(touches[i].x > width/2 && dist(rightT.x, rightT.y, touches[i].x, touches[i].y) < 100){
+			if(touches[i].x > width/2 && dist(rightT.x, rightT.y, touches[i].x, touches[i].y) < 150){
 				let x = touches[i].x -rightT.x;
 				let y = touches[i].y -rightT.y;
-				playerData.x = (map(x, -100, 100, 0, width)/zoom - offset.x);
-				playerData.y = (map(y, -100, 100, 0, width)/zoom - offset.y);
+				playerData.x = (map(x, -150, 150, 0, width)/zoom - offset.x);
+				playerData.y = (map(y, -150, 150, 0, width)/zoom - offset.y);
 				playerData.click = true;
-				fill(color(200, 200));
+				fill(color(200, 255));
 				circle(touches[i].x, touches[i].y, 50);
 			}
 
