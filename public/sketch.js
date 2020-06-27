@@ -159,7 +159,7 @@ function setup() {
 }
 
 function draw() {
-	if(1 = 1){
+	if(1 == 1){
 	leftT = {
 		x:width*0.2,
 		y:height*0.8}
