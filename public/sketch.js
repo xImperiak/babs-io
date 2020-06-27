@@ -293,6 +293,10 @@ function inputs(playerData) {
 	
 	if(isMobile.any()){
 		playerData.click = false;
+		playerData.a = false;
+		playerData.d = false;
+		playerData.w = false;
+		playerData.s = false;
 		push();
 		noStroke();
 		fill(color(255, 100));
@@ -311,12 +315,12 @@ function inputs(playerData) {
 				}else{playerData.d = false;}
 
 				if (y > 10) {
-				playerData.w = true;
-				}else{playerData.w = false;}
-
-				if (y < -10) {
 				playerData.s = true;
 				}else{playerData.s = false;}
+
+				if (y < -10) {
+				playerData.w = true;
+				}else{playerData.w = false;}
 				fill(color(200, 200));
 				circle(touches[i].x, touches[i].y, 50);
 			}
