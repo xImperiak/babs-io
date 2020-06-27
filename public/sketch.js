@@ -328,8 +328,8 @@ function inputs(playerData) {
 				let x = touches[i].x -rightT.x;
 				let y = touches[i].y -rightT.y;
 				let d = atan2(x, y);
-				playerData.x = 100*cos(d)/zoom - offset.x);
-				playerData.y = 100*sin(d)/zoom - offset.y);
+				playerData.x = (100*cos(d)/zoom - offset.x);
+				playerData.y = (100*sin(d)/zoom - offset.y);
 				playerData.click = true;
 				fill(color(255, 255));
 				circle(touches[i].x, touches[i].y, 50);
