@@ -327,10 +327,11 @@ function inputs(playerData) {
 			if(touches[i].x > width/2 && dist(rightT.x, rightT.y, touches[i].x, touches[i].y) < 150){
 				let x = touches[i].x -rightT.x;
 				let y = touches[i].y -rightT.y;
-				playerData.x = (map(x, -150, 150, 0, width)/zoom - offset.x);
-				playerData.y = (map(y, -150, 150, 0, width)/zoom - offset.y);
+				let d = atan2(x, y);
+				playerData.x = 100*cos(d)/zoom - offset.x);
+				playerData.y = 100*sin(d)/zoom - offset.y);
 				playerData.click = true;
-				fill(color(200, 255));
+				fill(color(255, 255));
 				circle(touches[i].x, touches[i].y, 50);
 			}
 
